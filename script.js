@@ -1,6 +1,12 @@
-document.getElementById("add-btn").addEventListener("click", function () {
-  const number1 = parseFloat(document.getElementById("number1").value);
-  const number2 = parseFloat(document.getElementById("number2").value);
-  const sum = number1 + number2;
-  document.getElementById("result").innerText = `The sum is: ${sum}`;
-});
+async function calculateTakeHomeSalary() {
+    const offerLetter = document.getElementById('offerLetter').value;
+    const response = await fetch('/calculate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ offerLetter })
+    });
+    const result = await response.json();
+    document.getElementById('result').innerHTML = `Your take home monthly amount: ₹${result.takeHomeMonthlyAmount}`;
+}
