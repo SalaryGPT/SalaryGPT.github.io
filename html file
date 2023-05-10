@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+        h2 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            resize: vertical;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>We will help you with finding jobs</h2>
+
+    <h2>Please copy and paste the job description of your preference</h2>
+    <textarea id="jobDescription" placeholder="Paste the job description here..."></textarea>
+
+    <h2>Please copy and paste your profile (CV) here</h2>
+    <textarea id="profile" placeholder="Paste your profile here..."></textarea>
+
+    <button onclick="generateCoverLetter()">Generate Cover Letter</button>
+
+    <h2>Here is your cover letter</h2>
+    <textarea id="coverLetter" readonly></textarea>
+
+    <script>
+        function generateCoverLetter() {
+            const jobDescription = document.getElementById('jobDescription').value;
+            const profile = document.getElementById('profile').value;
+            const coverLetter = `Job I want to apply for: ${jobDescription}\n\nMy profile: ${profile}\n\nCan you write a crisp cover letter (email) for me?`;
+            document.getElementById('coverLetter').value = coverLetter;
+        }
+    </script>
+</body>
+</html>
